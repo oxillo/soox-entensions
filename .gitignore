@@ -1,0 +1,4 @@
+# ignore xspec results
+/classes/
+/build/
+

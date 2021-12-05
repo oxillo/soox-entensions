@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="jar" name="SOOX extension for Saxon">
+    
+    <!-- common propserties -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="classes"/>
+         
+    
+    <target name="compile" description="Compile soox extension functions" >
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"
+            optimize="true" fork="true"
+            memoryinitialsize="256m"
+            memorymaximumsize="256m">
+        </javac>
+    </target>
+          
+    <target name="jar" description="Create Jar file for Soox extensions" depends="compile">
+        <mkdir dir="${build.dir}"/>
+        <jar basedir="${classes.dir}" compress="${build.compress}" jarfile="${build.dir}/soox-extensions.jar">
+            <manifest>
+                <attribute name="Project-Name" value="Soox extensions for Saxon"/>
+            </manifest>
+        </jar>
+    </target>
+</project>
